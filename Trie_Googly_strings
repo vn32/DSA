@@ -1,0 +1,68 @@
+#include<bits/stdc++.h>
+using namespace std;
+class Node{
+    public:
+    char data;
+    unordered_map<char,Node*> m;
+    bool isTerminal;
+    Node(char d){
+        data=d;
+        isTerminal=false;
+    }
+};
+class Trie{
+    public:
+    Node* root;
+    Trie(){
+        root=new Node('\0');
+    }
+    void insert(string word){
+        Node* temp=root;
+        for(char ch:word){
+            if(temp->m.count(ch)==0){
+                Node *n=new Node(ch);
+                temp->m[ch]=n;
+            }
+            temp=temp->m[ch];
+        }
+        temp->isTerminal=true;
+    }
+    bool search(string word){
+        Node* temp=root;
+        bool ans_found=false;
+        for(int i=0;i<word.length();i++){
+            char ch=word[i];
+            if(temp->m.count(ch)==0){
+                return false;
+            }
+            if(temp->isTerminal){
+                if(search(word.substr(i+1)))
+                ans_found=true;
+            }
+            temp=temp->m[ch];
+            
+        }
+        if(temp->isTerminal and ans_found){
+            return true;
+        }
+        return false;
+    }
+    
+    
+};
+
+ //Function should return a vector of googly strings 
+vector<string>  googlyStrings(vector<string> input){
+    vector<string> ans;
+    Trie t;
+    for(auto str:input){
+        t.insert(str);
+    }
+    for(auto str:input){
+        if(t.search(str))
+        ans.push_back(str);
+    }
+    return ans;
+    
+   
+}

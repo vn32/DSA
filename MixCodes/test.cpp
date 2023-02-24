@@ -16,7 +16,20 @@ freopen("output.txt", "w", stdout);
 
 int main(){
 	init_code();
-	cout<<"Hello World";
+	/*string s="nishad";
+
+	string s2=s;
+	reverse(s.begin(),s.end());*/
+	/*set<int> s;
+	s.insert(4);
+	s.insert(2);
+	s.insert(6);
+	for(auto value:s)
+		cout<<value<<endl*/;
+
+	/*cout<<s<<" " <<s2<<endl;*/
+	cout<<"hello world"<<endl;
+
 
 	
 }

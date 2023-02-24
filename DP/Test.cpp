@@ -16,7 +16,7 @@ freopen("output.txt", "w", stdout);
 
 int main(){
 	init_code();
-	cout<<"Hello World";
+	
 
 	
 }

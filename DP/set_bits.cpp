@@ -14,9 +14,35 @@ freopen("output.txt", "w", stdout);
 #endif // ONLINE_JUDGE
 }
 
+int return_set_bits(int n){
+	int cnt=0;
+	while(n){
+		if(n&1){
+			cnt++;
+		}
+		n=n/2;
+	}
+	return cnt;
+}
 int main(){
 	init_code();
-	cout<<"hello world";
+	//print numbe ro fset bits for number 1.. n
+	int n;
+	cin>>n;
+	//TC=nlogn
+	// for(int i=1;i<=n;i++){
+	// 	cout<<return_set_bits(i)<<endl;
+	// }
+
+	//o(n) solution
+	//dp[i]=dp[i/2]+(i%2)
+	int dp[n+1];
+	dp[0]=0;
+	for(int i=1;i<=n;i++){
+		dp[i]=dp[i/2]+(i%2);
+		cout<<dp[i]<<endl;
+	}
+
 	
 
 	

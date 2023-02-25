@@ -13,10 +13,30 @@ freopen("input.txt", "r", stdin);
 freopen("output.txt", "w", stdout);
 #endif // ONLINE_JUDGE
 }
-
+//https://leetcode.com/problems/number-of-steps-to-reduce-a-number-to-zero/
+const int N=1000000;
+int memo[N];
+int numberOfSteps(int n){
+	if(n==0)
+		return 0;
+	int &ans=memo[n];
+	if(ans!=-1)
+		return ans;
+	ans=INT_MAX;
+	if(n%2==0){
+		ans=min(ans,numberOfSteps(n/2));
+	}
+	ans=min(ans,numberOfSteps(n-1));
+	ans+=1;
+	return ans;
+}
 int main(){
 	init_code();
-	cout<<"hello world";
+	int n;
+	cin>>n;
+	memset(memo,-1,sizeof(memo));
+	cout<<"Ans is: "<<numberOfSteps(n)<<endl;
+
 	
 
 	

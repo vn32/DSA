@@ -1,1 +1,2 @@
-Ans is: 12
+a a b 
+aa b 
